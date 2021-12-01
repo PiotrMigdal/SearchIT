@@ -1,0 +1,9 @@
+$light: #dddddd;
+$dark: #000;
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.info {
+  font-family: 'French Script MT';
+  font-size: 2rem;
+  line-height: 0.5;
+}

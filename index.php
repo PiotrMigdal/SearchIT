@@ -1,4 +1,5 @@
 <?php
+    include 'includes/autoloader.inc.php';
 ?>
 
 <!doctype html>
@@ -6,64 +7,91 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="bootstrap-4.3.1/css/bootstrap.css">
-    <link rel="stylesheet" href="bootstrap-darkmode-master/darktheme.css" />
-    <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" Content="IE=edge,chrome=1" />
     <title>SearchIT</title>
+
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="node_modules/jquery/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </head>
 <body>
-    <nav class="card card-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <h6>Environment:</h6>
-                        <div class="btn-group">
-                            <input class="btn btn-success" type="submit" name="UAT" value="Live"/>
-                            <input class="btn btn-secondary" type="submit" name="UAT" value="UAT"/>
-                        </div>
+<main>
+    <nav class="m-1">
+        <div class="container">
+            <div class="row justify-content-end">
+                <button id="SettingsButton" class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#SettingsContent" aria-expanded="false" aria-controls="collapseExample">
+                    Settings
+                </button>
+                <div class="collapse position-absolute mt-5" id="SettingsContent">
+                    <div class="card card-body">
+                        <form action="rebuild.php" method="post">
+                            <button id="rebuild" class="btn btn-sm btn-outline-primary" type="submit" name="Rebuild_Database" value="Rebuild Database">
+                                Rebuild Database
+                                <div class="loader-box">
+                                    <div class="loader">
+                                    </div>
+                                </div>
+                            </button>
+                        </form>
+                        <div class="alert alert-success mt-3"></div>
                     </div>
-                    <div class="col">
-                        <h6>Task Status:</h6>
-                        <div class="btn-group">
-                            <input class="btn btn-secondary" type="submit" name="StatusActive" value="Active Only"/>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h6>Active servers:</h6>
-                        <div class="btn-group">
-                            <input class="btn btn-outline-secondary" type="submit" name="SelectAll" value="All"/>
-                            <input id="btn-" class="btn btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                            <input id="btn-" class="btn btn-success" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                            <input id="btn-" class="btn btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                            <input id="btn-" class="btn btn-success" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                            <input id="btn-" class="btn btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <button id="Rebuild" class="btn btn-outline-primary" type="submit" name="Rebuild_Database"
-                            value="Rebuild Database">
-                        Rebuild Database
-                    </button>
-                    <script src="darkswitch.js"></script>
                 </div>
             </div>
+            <div class="row pb-4">
+                <div class="p-2">
+                    <h6>Environment</h6>
+                    <div class="btn-group mt-1">
+                        <input class="btn btn-sm btn-success" type="submit" name="UAT" value="Live"/>
+                        <input class="btn btn-sm btn-secondary" type="submit" name="UAT" value="UAT"/>
+                    </div>
+                </div>
+                <div class="p-2">
+                    <h6>Task Status</h6>
+                    <input class="btn btn-sm btn-secondary mt-1" type="submit" name="StatusActive" value="Active only"/>
+                </div>
+                <div class="p-2">
+                    <h6>Active servers</h6>
+                    <div class="btn-group mt-1">
+                        <input id="btn-1" class="btn btn-sm btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
+                        <button type="button" class="btn btn-sm btn-success" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
+                            <span class="info">i</span>
+                        </button>
+                    </div>
+                    <div class="btn-group mt-1">
+                        <input id="btn-1" class="btn btn-sm btn-success" type="submit" name="Choose_" value="HLBPWAPP01"/>
+                        <button type="button" class="btn btn-sm btn-success" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
+                            <span class="info">i</span>
+                        </button>
+                    </div>
+                    <div class="btn-group mt-1">
+                        <input id="btn-1" class="btn btn-sm btn-success" type="submit" name="Choose_" value="HLBPWAPP01"/>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
+                            <span class="info">i</span>
+                        </button>
+                    </div>
+                    <div class="btn-group mt-1">
+                        <input id="btn-1" class="btn btn-sm btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
+                        <button type="button" class="btn btn-sm btn-warning" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
+                            <span class="info">i</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="input-group m-3 search-box justify-content-center">
-            <input value="" type="search" id="searchbox" class="form-control col-md-3" placeholder="Search..."  aria-label="Search..." aria-describedby="basic-addon2" />
+            <input value="" type="search" id="searchbox" class="form-control col-md-3" placeholder="Search..."
+                   aria-label="Search..." aria-describedby="basic-addon2"/>
             <div class="input-group-append">
-                <button id="searchit" class="btn btn-outline-primary" type="button">Search</button>
+                <button id="searchit" class="btn btn-sm btn-outline-primary" type="button">Search</button>
             </div>
         </div>
     </nav>
     <article>
         <div id="result" class="col-12"></div>
     </article>
-
-    <script src="bootstrap-darkmode-master/theme.js"></script>
+</main>
 </body>
-<!--<script src="jquery-3.3.1/jquery-3.3.1.min.js"></script>-->
-<!--<script src="popper-1.14.7/popper-1.14.7.min.js"></script>-->
-<!--<script src="bootstrap-4.3.1/js/bootstrap.js"></script>-->
 </html>

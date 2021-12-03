@@ -1,5 +1,5 @@
 <?php
-    include 'includes/autoloader.inc.php';
+    include "includes/autoloader.inc.php";
 ?>
 
 <!doctype html>
@@ -17,9 +17,9 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-<main>
-    <nav class="m-1">
-        <div class="container">
+<main class="container">
+    <nav class="mt-1">
+        <div>
             <div class="row justify-content-end">
                 <button id="SettingsButton" class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#SettingsContent" aria-expanded="false" aria-controls="collapseExample">
                     Settings
@@ -53,30 +53,7 @@
                 </div>
                 <div class="p-2">
                     <h6>Active servers</h6>
-                    <div class="btn-group mt-1">
-                        <input id="btn-1" class="btn btn-sm btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                        <button type="button" class="btn btn-sm btn-success" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
-                            <span class="info">i</span>
-                        </button>
-                    </div>
-                    <div class="btn-group mt-1">
-                        <input id="btn-1" class="btn btn-sm btn-success" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                        <button type="button" class="btn btn-sm btn-success" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
-                            <span class="info">i</span>
-                        </button>
-                    </div>
-                    <div class="btn-group mt-1">
-                        <input id="btn-1" class="btn btn-sm btn-success" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
-                            <span class="info">i</span>
-                        </button>
-                    </div>
-                    <div class="btn-group mt-1">
-                        <input id="btn-1" class="btn btn-sm btn-secondary" type="submit" name="Choose_" value="HLBPWAPP01"/>
-                        <button type="button" class="btn btn-sm btn-warning" data-toggle="popover" title="Last updated" data-content="3 weeks ago">
-                            <span class="info">i</span>
-                        </button>
-                    </div>
+                    <?php include "includes/server-list.inc.php"; ?>
                 </div>
             </div>
         </div>

@@ -53,7 +53,9 @@
                 </div>
                 <div class="p-2">
                     <h6>Active servers</h6>
-                    <?php include "includes/server-list.inc.php"; ?>
+                    <form action="index.php" method="get">
+                        <?php include "includes/show-servers.inc.php"; ?>
+                    </form>
                 </div>
             </div>
         </div>

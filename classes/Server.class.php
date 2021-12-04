@@ -1,14 +1,11 @@
 <?php
 
-class Server {
-    public function getServerList($env): array
+class Server extends Dbh{
+    public function getServerList(): array
     {
-        // Iterate through folder files and returns array
-        foreach (new DirectoryIterator('job_xmls_' . $env . '/') as $fileInfo) {
-            if($fileInfo->isFile() && $fileInfo->getExtension() == "xml") {
-                $server[] = ["name" => $fileInfo->getBasename(".xml"), "file_date" => $fileInfo->getCTime()];
-            }
-        }
-        return $server;
+        // Get them from DB table servers
+        $stmt = $this->connect()->prepare("SELECT * FROM servers ORDER BY environment ASC, name ASC");
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }

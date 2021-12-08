@@ -7,5 +7,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="SearchIT" />
+    <orderEntry type="module" module-name="static_namespace_autolad" />
   </component>
 </module>

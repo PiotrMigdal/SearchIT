@@ -9,15 +9,6 @@
 // })
 
 //On click on rebuild show the loader
-$("#rebuild").click(function() {
-    $(".loader-box").show();
-    $('#rebuild').removeClass("btn-outline-primary");
-    $('#rebuild').addClass("btn-primary");
-});
-$("#SettingsButton").click(function() {
-    $('#SettingsContent').toggleClass("show");
-    $('#SettingsButton').toggleClass("btn-primary");
-});
 $(function () {
     $('[data-toggle="popover"]').popover()
 });

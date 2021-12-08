@@ -1,7 +1,12 @@
 <?php
+
+namespace Views;
+
+use Models\Server;
+
 class ServerView extends Server {
     public function showServerButtons() {
-        foreach ($this->getServerList() as $server) {
+        foreach ($this->serversWithGet() as $server) {
             //THIS NEED TO GO TO CONTROLLER AND MAPPED ARRAY ADDING THE $SERVER["STATUS"]
             if(in_array($server["name"], $_GET["servers"])) {
                 $status = "success";
@@ -16,13 +21,6 @@ class ServerView extends Server {
                                 <span class="info">i</span>
                             </button>
                         </div>';
-        }
-    }
-    public function showGetServers() {
-        foreach ($this->getServerList() as $server) {
-            if(isset($_GET[$server])) {
-                $serverStatus = $_GET[$server]; // value can be false or true
-            }
         }
     }
 }

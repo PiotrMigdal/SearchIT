@@ -11,9 +11,17 @@ class Server extends Dbh {
         return $stmt->fetchAll();
     }
 
-    public function serversWithGet(): array
+    public function serversWithGet($data): array
     {
-        //use current list array
-        return $this->serverList();
+        $servers = array();
+        foreach ($this->serverList() as $server) {
+            if(in_array($server["name"], $data)) {
+                $server["selected"] = true;
+            } else {
+                $server["selected"] = false;
+            }
+            $servers[] = $server;
+        }
+        return $servers;
     }
 }

@@ -5,14 +5,14 @@ namespace Views;
 use Models\Server;
 
 class ServerView extends Server {
-    public function showServerButtons() {
-        foreach ($this->serversWithGet() as $server) {
-            //THIS NEED TO GO TO CONTROLLER AND MAPPED ARRAY ADDING THE $SERVER["STATUS"]
-            if(in_array($server["name"], $_GET["servers"])) {
-                $status = "success";
-            } else {
-                $status = "secondary";
-            }
+    public function serversForm($servers) {
+
+        echo '<form action="index.php" method="get">';
+        foreach($_GET["servers"] as $get) {
+            echo '<input type="hidden" name="servers[]" value="' . $get. '">';
+        }
+        foreach ($servers as $server) {
+            $server["selected"] ? $status = "success" : $status = "secondary";
             echo    '<div class="btn-group m-1">
                             <button class="btn btn-sm btn-' . $status . '" type="submit" name="servers[]" value="' . $server["name"] . '">
                                 ' . $server["name"] . '
@@ -22,5 +22,6 @@ class ServerView extends Server {
                             </button>
                         </div>';
         }
+        echo "</form>";
     }
 }

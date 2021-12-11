@@ -8,7 +8,19 @@
 //     $('body').toggleClass('light dark')
 // })
 
-//On click on rebuild show the loader
+// On click on rebuild button or 'i' icon - show popover
 $(function () {
     $('[data-toggle="popover"]').popover()
 });
+
+// Switch environment
+
+// create variable which has content of clicked button
+// Check what is the status of the button
+// then use variable to specify which server buttons need to be disabled and removed checked/active
+
+
+// .disabledbutton {
+//     pointer-events: none;
+//     opacity: 0.4;
+// }

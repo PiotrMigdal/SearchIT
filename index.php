@@ -19,52 +19,59 @@
 <body>
 <main class="container">
     <nav class="mt-1">
-        <div>
-            <div class="row justify-content-end">
-                <button id="SettingsButton" class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#SettingsContent" aria-expanded="false" aria-controls="collapseExample">
-                    Settings
-                </button>
-                <div class="collapse position-absolute mt-5" id="SettingsContent">
-                    <div class="card card-body">
-                        <form action="rebuild.php" method="post">
-                            <button id="rebuild" class="btn btn-sm btn-outline-primary" type="submit" name="Rebuild_Database" value="Rebuild Database">
-                                Rebuild Database
-                                <div class="loader-box">
-                                    <div class="loader">
+        <!--    Start navigation form    -->
+        <form action="index.php" method="get">
+            <div>
+                <div class="row justify-content-end">
+                    <button id="SettingsButton" class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#SettingsContent" aria-expanded="false" aria-controls="collapseExample">
+                        Settings
+                    </button>
+                    <div class="collapse position-absolute mt-5" id="SettingsContent">
+                        <div class="card card-body">
+                            <form action="rebuild.php" method="post">
+                                <button id="rebuild" class="btn btn-sm btn-outline-primary" type="submit" name="Rebuild_Database" value="Rebuild Database">
+                                    Rebuild Database
+                                    <div class="loader-box">
+                                        <div class="loader">
+                                        </div>
                                     </div>
-                                </div>
-                            </button>
-                        </form>
-                        <div class="alert alert-success mt-3"></div>
+                                </button>
+                            </form>
+                            <div class="alert alert-success mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pb-4">
+                    <div class="p-2">
+                        <h6>Environment</h6>
+                            <?php include "includes/environment-index.inc.php"; ?>
+                    </div>
+                    <div class="p-2">
+                        <h6>Task Status</h6>
+                        <div class="btn-group m-1">
+                            <div class="btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-sm btn-checkbox active">
+                                    <input type="checkbox" checked autocomplete="off"> Active only
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-2 live-servers">
+                        <h6>Live servers</h6>
+                        <?php include "includes/server-index.inc.php"; ?>
                     </div>
                 </div>
             </div>
-            <div class="row pb-4">
-                <div class="p-2">
-                    <h6>Environment</h6>
-                    <div class="btn-group mt-1">
-                        <input class="btn btn-sm btn-success" type="submit" name="UAT" value="Live"/>
-                        <input class="btn btn-sm btn-secondary" type="submit" name="UAT" value="UAT"/>
-                    </div>
-                </div>
-                <div class="p-2">
-                    <h6>Task Status</h6>
-                    <input class="btn btn-sm btn-secondary mt-1" type="submit" name="StatusActive" value="Active only"/>
-                </div>
-                <div class="p-2">
-                    <h6>Active servers</h6>
-                    <?php include "includes/show-servers.inc.php"; ?>
-                </div>
-            </div>
-        </div>
 
-        <div class="input-group m-3 search-box justify-content-center">
-            <input value="" type="search" id="searchbox" class="form-control col-md-3" placeholder="Search..."
-                   aria-label="Search..." aria-describedby="basic-addon2"/>
-            <div class="input-group-append">
-                <button id="searchit" class="btn btn-sm btn-outline-primary" type="button">Search</button>
+            <div class="input-group m-3 search-box justify-content-center">
+                <input value="" type="search" id="searchbox" class="form-control col-md-3" placeholder="Search..."
+                       aria-label="Search..." aria-describedby="basic-addon2"/>
+                <div class="input-group-append">
+                    <button id="searchit" class="btn btn-sm btn-outline-primary" type="button">Search</button>
+                </div>
             </div>
-        </div>
+        <!--    End navigation form    -->
+        </form>
     </nav>
     <article>
         <div id="result" class="col-12"></div>

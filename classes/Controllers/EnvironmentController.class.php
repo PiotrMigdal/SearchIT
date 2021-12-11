@@ -2,7 +2,7 @@
 namespace Controllers;
 
 
-class ServerController {
+class EnvironmentController {
     private $model;
     private $view;
     function __construct($model, $view)
@@ -13,8 +13,8 @@ class ServerController {
 
     public function index()
     {
-        $data = $this->model->serverList();
+        $data = $this->model->envList();
 
-        return $this->view->serversForm($data);
+        return $this->view->envForm($data);
     }
 }

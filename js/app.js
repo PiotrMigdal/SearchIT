@@ -14,13 +14,30 @@ $(function () {
 });
 
 // Switch environment
+document.querySelectorAll('.switch-btn').forEach(btn => {
+    let env = btn.id;
+    let switchedClass = '.' + env + '-server';
 
-// create variable which has content of clicked button
-// Check what is the status of the button
-// then use variable to specify which server buttons need to be disabled and removed checked/active
-
-
-// .disabledbutton {
-//     pointer-events: none;
-//     opacity: 0.4;
-// }
+    document.querySelectorAll(switchedClass).forEach(serverBtn => {
+            serverBtn.addEventListener('click', function (){
+                if(btn.classList.contains("active")) {
+                    btn.classList.remove('active');
+                    btn.children.checked = false;
+                    console.log(btn);
+                }
+            });
+    });
+    btn.addEventListener('click', function(event) {
+        if(event.target.classList.contains("active")) {
+            document.querySelectorAll(switchedClass).forEach(item => {
+                item.classList.remove('active');
+                item.children.checked = false;
+            });
+        } else {
+            document.querySelectorAll(switchedClass).forEach(item => {
+                item.classList.add('active');
+                item.children.checked = true;
+            });
+        }
+    })
+});

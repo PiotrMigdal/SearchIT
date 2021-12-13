@@ -1,8 +1,9 @@
 <?php
 namespace Controllers;
 
+use Controllers\Controller;
 
-class ServerController {
+class ServerController extends Controller {
     private $model;
     private $view;
     function __construct($model, $view)
@@ -15,6 +16,6 @@ class ServerController {
     {
         $data = $this->model->serverList();
 
-        return $this->view->serversForm($data);
+        return $this->view->serversForm($data, $this->checkServers());
     }
 }

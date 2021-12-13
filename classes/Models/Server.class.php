@@ -3,6 +3,7 @@
 namespace Models;
 
 // TODO
+// - add that mini
 // - change folder names to Live and UAT and that db import them according to this. if someone adds ansible, they will be able just to add folder
 class Server extends Dbh {
     public function serverList(): array

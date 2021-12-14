@@ -16,6 +16,6 @@ class EnvironmentController extends Controller{
     {
         $data = $this->model->envList();
 
-        return $this->view->envForm($data, $this->checkServers());
+        return $this->view->envForm($data, $this->checkRequest());
     }
 }

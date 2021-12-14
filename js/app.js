@@ -14,30 +14,33 @@ $(function () {
 });
 
 // Switch environment
-document.querySelectorAll('.switch-btn').forEach(btn => {
-    let env = btn.id;
-    let switchedClass = '.' + env + '-server';
+document.querySelectorAll('.switch-btn').forEach(envBtn => {
+    let serverClass = '.' + envBtn.id + '-server';
+    let serverBtns = document.querySelectorAll(serverClass);
 
-    document.querySelectorAll(switchedClass).forEach(serverBtn => {
-            serverBtn.addEventListener('click', function (){
-                if(btn.classList.contains("active")) {
-                    btn.classList.remove('active');
-                    btn.children.checked = false;
-                    console.log(btn);
-                }
-            });
-    });
-    btn.addEventListener('click', function(event) {
+    envBtn.addEventListener('click', function(event) {
         if(event.target.classList.contains("active")) {
-            document.querySelectorAll(switchedClass).forEach(item => {
-                item.classList.remove('active');
-                item.children.checked = false;
+            serverBtns.forEach(serverBtn => {
+                serverBtn.classList.remove('active');
+                serverBtn.children[0].checked = false;
             });
         } else {
-            document.querySelectorAll(switchedClass).forEach(item => {
-                item.classList.add('active');
-                item.children.checked = true;
+            serverBtns.forEach(serverBtn => {
+                serverBtn.classList.add('active');
+                serverBtn.children[0].checked = true;
             });
         }
-    })
+    });
+
+    serverBtns.forEach(serverBtn => {
+        serverBtn.addEventListener('click', function (){
+            if(envBtn.classList.contains("active")) {
+                envBtn.classList.remove('active');
+                envBtn.children[0].checked = false;
+            } else if (!serverBtn.classList.contains("active") && (serverBtns.length - 1) == document.querySelectorAll(serverClass + '.active').length) {
+                envBtn.classList.add('active');
+                envBtn.children[0].checked = true;
+            }
+        });
+    });
 });

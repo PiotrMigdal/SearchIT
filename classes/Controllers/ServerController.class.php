@@ -16,6 +16,6 @@ class ServerController extends Controller {
     {
         $data = $this->model->serverList();
 
-        return $this->view->serversForm($data, $this->checkServers());
+        return $this->view->serversForm($data, $this->checkServers(), $this->checkRequest());
     }
 }

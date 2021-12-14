@@ -3,9 +3,13 @@ namespace Controllers;
 
 
 class Controller {
+    protected function checkRequest() {
+        if(!empty($_GET)) {
+            return true;
+        }
+    }
 
     protected function checkServers() {
-        //add error messages and add minimum number of characters
         if(isset($_GET["servers"])) {
             return $_GET["servers"];
         }

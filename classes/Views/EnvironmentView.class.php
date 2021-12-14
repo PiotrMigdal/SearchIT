@@ -3,12 +3,12 @@
 namespace Views;
 
 class EnvironmentView {
-    public function envForm($envs, $selected) {
+    public function envForm($envs, $request) {
         foreach ($envs as $env) {
-            if(isset($selected)){
+            if(isset($request)){
                 $active = "";
                 $checked = "";
-            } else if ($env["environment"] === "LIVE") {
+            } else if($env["environment"] === "LIVE") {
                 $active = "active";
                 $checked = "checked";
             } else {

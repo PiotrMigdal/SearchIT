@@ -1,4 +1,5 @@
 node_modules
-job_xmls_prod
-job_xmls_uat
+import/LIVE
+import/UAT
 dbh.class.php
+dbconnect.php

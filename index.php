@@ -74,7 +74,7 @@
     </nav>
     <article>
         <div id="result" class="col-12">
-            <?php include "includes/task-index.php"; ?>
+            <?php include "includes/task-index.inc.php"; ?>
         </div>
     </article>
 </main>

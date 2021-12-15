@@ -2348,34 +2348,6 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
 }
 
-.btn-checkbox {
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-.btn-checkbox:hover {
-  color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
-}
-.btn-checkbox:focus, .btn-checkbox.focus {
-  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
-}
-.btn-checkbox.disabled, .btn-checkbox:disabled {
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-.btn-checkbox:not(:disabled):not(.disabled):active, .btn-checkbox:not(:disabled):not(.disabled).active, .show > .btn-checkbox.dropdown-toggle {
-  color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
-}
-.btn-checkbox:not(:disabled):not(.disabled):active:focus, .btn-checkbox:not(:disabled):not(.disabled).active:focus, .show > .btn-checkbox.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem rgba(72, 180, 97, 0.5);
-}
-
-
 .btn-success {
   color: #fff;
   background-color: #28a745;
@@ -9687,6 +9659,10 @@ h3 {
   font-family: "French Script MT";
   font-size: 2rem;
   line-height: 0.5;
+}
+
+.bg-danger-light {
+  background: #fa8691;
 }
 
 /*# sourceMappingURL=app.css.map */

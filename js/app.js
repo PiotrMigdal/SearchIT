@@ -3,6 +3,16 @@ $(function () {
     $('[data-toggle="popover"]').popover()
 });
 
+//Highlight searched text
+(function (e) {
+    let searched = document.getElementById("searchInput").value.trim().toUpperCase();
+    if (searched !== "") {
+        let text = document.getElementById("result").innerHTML;
+        let re = new RegExp(searched,"g"); // search for all instances
+        let newText = text.replace(re, `<b class="text-success">${searched}</b>`);
+        document.getElementById("result").innerHTML = newText;
+}})();
+
 // Switch environment
 document.querySelectorAll('.switch-btn').forEach(envBtn => {
     let serverClass = '.' + envBtn.id + '-server';
@@ -44,3 +54,4 @@ document.querySelectorAll('.switch-btn').forEach(envBtn => {
         });
     });
 });
+

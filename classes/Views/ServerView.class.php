@@ -24,21 +24,26 @@ class ServerView {
                 $checked = "";
             }
 
-            if(strtotime($server["updated_at"]) < strtotime('-2 day')){
-                $info = "btn-warning";
+            if(strtotime($server["updated_at"]) < strtotime('-30 day')){
+                $infoBtn = "btn-danger";
+                $info = "Not updated within 30 days - see wiki and check Visual Cron export job on the server.";
+            } else if(strtotime($server["updated_at"]) < strtotime('-2 day')) {
+                $infoBtn = "btn-warning";
+                $info = "Not updated within 2 days - see wiki and check Visual Cron export job on the server.";
             } else {
-                $info = "btn-success";
+                $infoBtn = "btn-success";
+                $info = "Up to date!";
             }
 
             echo    '<div class="btn-group m-1">
-                            <div class="btn-group-toggle" data-toggle="buttons">
+                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
                               <label class="btn btn-sm btn-checkbox ' . $active . ' server-btn ' . $server["environment"] . '-server">
                                 <input name="servers[]" value="' . $server["name"] . '" type="checkbox" ' . $checked . ' autocomplete="off"> ' . $server["name"] . '
                               </label>
+                                <button type="button" class="btn btn-sm ' . $infoBtn . '" data-toggle="popover" title="Last updated on ' . $server["updated_at"] . ' " data-content="' . $info . '">
+                                    <span class="info">i</span>
+                                </button>
                             </div>
-                            <button type="button" class="btn btn-sm ' . $info . '" data-toggle="popover" title="Last updated" data-content="' . $server["updated_at"] . '">
-                                <span class="info">i</span>
-                            </button>
                         </div>';
         }
     }

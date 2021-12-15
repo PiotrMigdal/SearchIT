@@ -43,24 +43,29 @@ class TaskController extends Controller {
 
     public function index()
     {
+        $result = true;
         if($this->minSearchLen() === false) {
             $this->errorView->errorMessage("enter3characters");
-            exit();
+            $result = false;
         }
         if($this->serversSelected() === false) {
             $this->errorView->errorMessage("noServersSelected");
-            exit();
+            $result = false;
         }
         if($this->checkServers() === null) {
-            exit();
+            $result = false;
         }
 
-        $data = $this->model->searchTasks($this->checkServers(), $this->checkSearch());
-
-        if($data === []) {
-            $this->errorView->errorMessage("noResults");
-            exit();
+        if($result === true) {
+            $data = $this->model->searchTasks($this->checkServers(), $this->checkSearch(), $this->checkStatus());
+            if($data === []) {
+                $this->errorView->errorMessage("noResults");
+                $result = false;
+            }
         }
-        return $this->view->foundTasks($data);
+
+        if($result === true) {
+            return $this->view->foundTasks($data);
+        }
     }
 }

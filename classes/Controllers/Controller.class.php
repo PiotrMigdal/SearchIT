@@ -3,6 +3,11 @@ namespace Controllers;
 
 
 class Controller {
+    protected function checkStatus() {
+        if(isset($_GET["activeonly"])) {
+            return true;
+        }
+    }
     protected function checkRequest() {
         if(!empty($_GET)) {
             return true;

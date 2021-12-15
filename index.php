@@ -21,12 +21,12 @@
         <!--    Start navigation form    -->
         <form action="index.php" method="get">
             <div>
-                <div class="row justify-content-end">
-                    <button id="SettingsButton" class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#SettingsContent" aria-expanded="false" aria-controls="collapseExample">
-                        Settings
-                    </button>
-                    <div class="collapse position-absolute mt-5" id="SettingsContent">
-                        <div class="card card-body">
+<!--                <div class="row justify-content-end">-->
+<!--                    <button id="SettingsButton" class="btn btn-sm btn-outline-primary" type="button" data-toggle="collapse" data-target="#SettingsContent" aria-expanded="false" aria-controls="collapseExample">-->
+<!--                        Settings-->
+<!--                    </button>-->
+<!--                    <div class="collapse position-absolute mt-5" id="SettingsContent">-->
+<!--                        <div class="card card-body">-->
 <!--                            <form action="rebuild.php" method="post">-->
 <!--                                <button id="rebuild" class="btn btn-sm btn-outline-primary" type="submit" name="Rebuild_Database" value="Rebuild Database">-->
 <!--                                    Rebuild Database-->
@@ -36,17 +36,17 @@
 <!--                                    </div>-->
 <!--                                </button>-->
 <!--                            </form>-->
-                            <div class="alert alert-success mt-3"></div>
-                        </div>
-                    </div>
-                </div>
+<!--                            <div class="alert alert-success mt-3"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <div class="row pb-4">
                     <div class="p-2">
                         <h6>Task Status</h6>
                         <div class="btn-group m-1">
                             <div class="btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-sm btn-checkbox active">
-                                    <input type="checkbox" checked autocomplete="off" name="status"> Active only
+                                <label class="btn btn-sm btn-checkbox <?php if($_GET && !isset($_GET["activeonly"])){ echo "";}else{echo "active";} ?>">
+                                    <input type="checkbox" <?php if($_GET && !isset($_GET["activeonly"])){ echo "";}else{echo "checked";} ?> autocomplete="off" name="activeonly"> Active only
                                 </label>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
             </div>
 
             <div class="input-group m-3 search-box justify-content-center">
-                <input value="<?php echo $_GET["search"] ?? "" ?>" type="text" name="search" class="form-control col-md-3" placeholder="Search..."
+                <input value="<?php echo $_GET["search"] ?? "" ?>" type="text" name="search" class="form-control col-md-3" id="searchInput" placeholder="Search..."
                        aria-label="Search..." aria-describedby="basic-addon2">
                 <div class="input-group-append">
                     <input type="submit" class="btn btn-sm btn-primary">

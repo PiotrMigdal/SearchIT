@@ -40,10 +40,10 @@ class ServerView {
                               <label class="btn btn-sm btn-checkbox ' . $active . ' server-btn ' . $server["environment"] . '-server">
                                 <input name="servers[]" value="' . $server["name"] . '" type="checkbox" ' . $checked . ' autocomplete="off"> ' . $server["name"] . '
                               </label>
-                                <button type="button" class="btn btn-sm ' . $infoBtn . '" data-toggle="popover" title="Last updated on ' . $server["updated_at"] . ' " data-content="' . $info . '">
-                                    <span class="info">i</span>
-                                </button>
                             </div>
+                            <button type="button" class="btn btn-sm ' . $infoBtn . '" data-toggle="popover" title="Last updated on ' . $server["updated_at"] . ' " data-content="' . $info . '">
+                                <span class="info">i</span>
+                            </button>
                         </div>';
         }
     }

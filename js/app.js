@@ -8,7 +8,7 @@ $(function () {
     let searched = document.getElementById("searchInput").value.trim().toUpperCase();
     if (searched !== "") {
         let text = document.getElementById("result").innerHTML;
-        let re = new RegExp(searched,"g"); // search for all instances
+        let re = new RegExp(searched,"gi"); // search for all instances
         let newText = text.replace(re, `<b class="text-success">${searched}</b>`);
         document.getElementById("result").innerHTML = newText;
 }})();
@@ -27,8 +27,8 @@ document.querySelectorAll('.switch-btn').forEach(envBtn => {
     })();
 
     // Listen if environment buttons change
-    envBtn.addEventListener('click', function(event) {
-        if(event.target.classList.contains("active")) {
+    envBtn.addEventListener('click', function() {
+        if(envBtn.classList.contains("active")) {
             serverBtns.forEach(serverBtn => {
                 serverBtn.classList.remove('active');
                 serverBtn.children[0].checked = false;
@@ -44,7 +44,10 @@ document.querySelectorAll('.switch-btn').forEach(envBtn => {
     // Listen if server buttons change
     serverBtns.forEach(serverBtn => {
         serverBtn.addEventListener('click', function (){
-            if(envBtn.classList.contains("active")) {
+            console.log((serverBtns.length - 1));
+            console.log(document.querySelectorAll(serverClass + '.active').length);
+            console.log(envBtn.classList);
+            if(envBtn.classList.contains("active") && (serverBtns.length - 1) !== document.querySelectorAll(serverClass + '.active').length) {
                 envBtn.classList.remove('active');
                 envBtn.children[0].checked = false;
             } else if (!serverBtn.classList.contains("active") && (serverBtns.length - 1) == document.querySelectorAll(serverClass + '.active').length) {

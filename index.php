@@ -73,7 +73,7 @@
         </form>
     </nav>
     <article>
-        <div id="result" class="col-12">
+        <div id="result" class="col-12 text-break">
             <?php include "includes/task-index.inc.php"; ?>
         </div>
     </article>

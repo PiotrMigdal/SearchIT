@@ -11,8 +11,7 @@ class Server extends Dbh
     public function serverList(): array
     {
         // Get them from DB table servers
-        $db = Dbh::getInstance();
-        $stmt = $db->connect()->prepare('SELECT * FROM servers ORDER BY environment ASC, name ASC');
+        $stmt = self::getInstance()->connect()->prepare('SELECT * FROM servers ORDER BY environment ASC, name ASC');
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -20,8 +19,7 @@ class Server extends Dbh
     public function envList(): array
     {
         // Get them from DB table servers
-        $db = Dbh::getInstance();
-        $stmt = $db->connect()->prepare('SELECT environment FROM servers GROUP BY environment');
+        $stmt = self::getInstance()->connect()->prepare('SELECT environment FROM servers GROUP BY environment');
         $stmt->execute();
         return $stmt->fetchAll();
     }

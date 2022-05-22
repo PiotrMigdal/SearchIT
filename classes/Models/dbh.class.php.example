@@ -9,25 +9,25 @@ class Dbh {
      * Enter database host name or IP
      * @var string
      */
-    private string $host = "";
+    private string $host = '';
 
     /**
      * Enter database user
      * @var string
      */
-    private string $user = "";
+    private string $user = '';
 
     /**
      * Enter database user password
      * @var string
      */
-    private string $pwd = "";
+    private string $pwd = '';
 
     /**
      * Enter database name
      * @var string
      */
-    private string $dbName= "";
+    private string $dbName= '';
 
     /**
      * @var Dbh

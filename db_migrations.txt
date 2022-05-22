@@ -1,0 +1,3 @@
+CREATE TABLE `searchit`.`servers` ( `id` INT NOT NULL AUTO_INCREMENT , `name` TEXT NOT NULL , `environment` TEXT NOT NULL , `updated_at` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+
+CREATE TABLE `searchit`.git`tasks` ( `Id` INT NOT NULL AUTO_INCREMENT , `GroupName` TEXT NOT NULL , `JobName` TEXT NOT NULL , `JobDescription` TEXT NOT NULL , `TaskName` TEXT NOT NULL , `TaskDescription` TEXT NOT NULL , `DestinationDirectory` TEXT NOT NULL , `SourceFolder` TEXT NOT NULL , `IncludeFileMask` TEXT NOT NULL , PRIMARY KEY (`Id`)) ENGINE = InnoDB;

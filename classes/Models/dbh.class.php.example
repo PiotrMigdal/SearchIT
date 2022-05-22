@@ -5,12 +5,51 @@ namespace Models;
 use PDO;
 
 class Dbh {
-    private $host = "";
-    private $user = "";
-    private $pwd = "";
-    private $dbName= "searchit";
+    /**
+     * Enter database host name or IP
+     * @var string
+     */
+    private string $host = "";
 
-    protected function connect() {
+    /**
+     * Enter database user
+     * @var string
+     */
+    private string $user = "";
+
+    /**
+     * Enter database user password
+     * @var string
+     */
+    private string $pwd = "";
+
+    /**
+     * Enter database name
+     * @var string
+     */
+    private string $dbName= "";
+
+    /**
+     * @var Dbh
+     */
+    public static Dbh $instance;
+
+    /**
+     * @return Dbh
+     */
+    protected static function getInstance(): Dbh
+    {
+        if(!isset(Dbh::$instance)){
+            self::$instance = new Dbh();
+        }
+        return self::$instance;
+    }
+
+    /**
+     * @return PDO
+     */
+    protected function connect(): PDO
+    {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;
         $pdo = new PDO($dsn, $this->user, $this->pwd);
         $pdo->setAttribute(PDO ::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

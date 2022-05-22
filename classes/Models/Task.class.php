@@ -12,7 +12,8 @@ class Task extends Dbh {
         $in  = str_repeat('?,', count($servers) - 1) . '?';
         $searchLike = "%$search%";
 
-        $stmt = $this->connect()->prepare("SELECT * FROM tasks WHERE 
+        $db = Dbh::getInstance();
+        $stmt = $db->connect()->prepare("SELECT * FROM tasks WHERE 
                       Server in ($in) $active and 
                       (GroupName like ? or JobName like ? or JobDescription like ? or TaskName like ? or TaskDescription like ? or DestinationDirectory like ? or SourceFolder like ? or IncludeFileMask like ?)
                       ORDER BY ID");

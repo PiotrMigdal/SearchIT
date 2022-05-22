@@ -10,14 +10,16 @@ class Server extends Dbh {
     public function serverList(): array
     {
         // Get them from DB table servers
-        $stmt = $this->connect()->prepare("SELECT * FROM servers ORDER BY environment ASC, name ASC");
+        $db = Dbh::getInstance();
+        $stmt = $db->connect()->prepare("SELECT * FROM servers ORDER BY environment ASC, name ASC");
         $stmt->execute();
         return $stmt->fetchAll();
     }
     public function envList(): array
     {
         // Get them from DB table servers
-        $stmt = $this->connect()->prepare("SELECT environment FROM servers GROUP BY environment");
+        $db = Dbh::getInstance();
+        $stmt = $db->connect()->prepare("SELECT environment FROM servers GROUP BY environment");
         $stmt->execute();
         return $stmt->fetchAll();
     }

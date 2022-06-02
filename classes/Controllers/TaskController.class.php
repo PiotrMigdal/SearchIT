@@ -2,6 +2,7 @@
 namespace Controllers;
 
 use Controllers\Controller;
+use Modules\Errors\ErrorFactory;
 
 class TaskController extends Controller {
     private $model;
@@ -45,11 +46,11 @@ class TaskController extends Controller {
     {
         $result = true;
         if($this->minSearchLen() === false) {
-            $this->errorView->errorMessage("enter3characters");
+            $this->errorView->selectType('enter3characters')->draw();
             $result = false;
         }
         if($this->serversSelected() === false) {
-            $this->errorView->errorMessage("noServersSelected");
+            $this->errorView->selectType('noServersSelected')->draw();
             $result = false;
         }
         if($this->checkServers() === null) {
@@ -59,7 +60,7 @@ class TaskController extends Controller {
         if($result === true) {
             $data = $this->model->searchTasks($this->checkServers(), $this->checkSearch(), $this->checkStatus());
             if($data === []) {
-                $this->errorView->errorMessage("noResults");
+                $this->errorView->selectType('noResults')->draw();
                 $result = false;
             }
         }

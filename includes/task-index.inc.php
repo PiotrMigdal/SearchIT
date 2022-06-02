@@ -1,13 +1,13 @@
 <?php
 
 use Models\Task;
+use Modules\Errors\ErrorFactory;
 use Views\TaskView;
-use Views\ErrorView;
 use Controllers\TaskController;
 
 
 $model = new Task();
 $view = new TaskView();
-$errorView = new ErrorView();
+$errorView = new ErrorFactory();
 $controller = new TaskController($model, $view, $errorView);
 $controller->index();
